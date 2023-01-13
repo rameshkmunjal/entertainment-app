@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-meal/static/css/main.82f85930.css",
-    "main.js": "/react-meal/static/js/main.34a089a5.js",
-    "index.html": "/react-meal/index.html",
-    "main.82f85930.css.map": "/react-meal/static/css/main.82f85930.css.map",
-    "main.34a089a5.js.map": "/react-meal/static/js/main.34a089a5.js.map"
+    "main.css": "/entertainment-app/static/css/main.82f85930.css",
+    "main.js": "/entertainment-app/static/js/main.34a089a5.js",
+    "index.html": "/entertainment-app/index.html",
+    "main.82f85930.css.map": "/entertainment-app/static/css/main.82f85930.css.map",
+    "main.34a089a5.js.map": "/entertainment-app/static/js/main.34a089a5.js.map"
   },
   "entrypoints": [
     "static/css/main.82f85930.css",
