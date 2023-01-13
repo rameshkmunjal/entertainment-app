@@ -1,0 +1,13 @@
+.nav ul{
+    list-style-type:none;
+}
+.nav-link{
+    text-decoration: none;
+    color:var(--clr-white);
+}
+.nav-link:hover{
+    cursor:pointer;
+}
+.nav-link:hover img{    
+    transform:scale(1.25);
+}

@@ -1,0 +1,23 @@
+colors
+--clr-red:#FC4747
+--clr-dark-black:#10141E
+--clr-gray:#5A698F
+--clr-light-black:#161D2F
+--clr-white:#FFFFFF
+
+TYPOGRAPHY
+Heading Large : OUTFIT LIGHT :32PX
+Heading Medium : OUTFIT LIGHT :24PX
+Heading small: OUTFIT Medium :24PX
+Heading xs : OUTFIT Medium :18PX
+Heading xs : OUTFIT Light :15PX
+Heading xs : OUTFIT Light :13PX
+
+Buttons 
+Button idle red
+button hover white
+
+Bookmark icon idle
+Bookmark icon hover
+Bookmark icon active
+
