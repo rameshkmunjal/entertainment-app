@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/rameshkmunjal/entertainment-app/static/css/main.82f85930.css",
+    "main.js": "/rameshkmunjal/entertainment-app/static/js/main.34a089a5.js",
+    "index.html": "/rameshkmunjal/entertainment-app/index.html",
+    "main.82f85930.css.map": "/rameshkmunjal/entertainment-app/static/css/main.82f85930.css.map",
+    "main.34a089a5.js.map": "/rameshkmunjal/entertainment-app/static/js/main.34a089a5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82f85930.css",
+    "static/js/main.34a089a5.js"
+  ]
+}
