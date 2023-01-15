@@ -1,12 +1,13 @@
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Search from '../Components/Search';
 import Bookmark from '../Components/Bookmark';
 
 const TrendingScreen=()=>{
+    const [movieList, setMovieList]=useState([]);
     const placeholderText='Search for Trending Movies/Series';
     const movieData = useSelector((state) => state.movieList);    
-    const movieList=movieData.movies;
+    setMovieList(movieData.movies);
     const dispatch=useDispatch();
 
     useEffect(()=>{
@@ -22,6 +23,7 @@ const TrendingScreen=()=>{
                 console.log(m.isBookmarked);
             }
         })
+        setMovieList(movieList);
     }
 
     if(movieList.length > 0){

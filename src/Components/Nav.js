@@ -7,22 +7,22 @@ const Nav=()=>{
             <ul>
                 <li>
                     <Link className="nav-link" to={`/`}>
-                        <img src="../assets/icon-nav-home.svg" alt="nav-home-icon" />
+                        <img src="../entertainment-app/assets/icon-nav-home.svg" alt="nav-home-icon" />
                     </Link>
                 </li>
                 <li>
                     <Link className="nav-link" to={`/movies`}>
-                        <img src="../assets/icon-nav-movies.svg" alt="nav-home-icon" />
+                        <img src="../entertainment-app/assets/icon-nav-movies.svg" alt="nav-home-icon" />
                     </Link>
                 </li>
                 <li>
                     <Link className="nav-link" to={`/series`}>
-                        <img src="../assets/icon-nav-tv-series.svg" alt="nav-home-icon" />
+                        <img src="../entertainment-app/assets/icon-nav-tv-series.svg" alt="nav-home-icon" />
                     </Link>
                 </li> 
                 <li>
                     <Link className="nav-link" to={`/bookmarked`}>
-                        <img src="../assets/icon-nav-bookmark.svg" alt="nav-home-icon" />
+                        <img src="../entertainment-app/assets/icon-nav-bookmark.svg" alt="nav-home-icon" />
                     </Link>
                 </li>                                     
             </ul>

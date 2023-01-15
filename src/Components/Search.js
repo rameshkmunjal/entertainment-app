@@ -11,7 +11,7 @@ const Search=({placeholderText, searchHandler})=>{
     
     return(
         <div className="searchInputContainer">
-            <img className="searchImage" src="../assets/icon-search.svg" alt="img-search" />
+            <img className="searchImage" src="../entertainment-app/assets/icon-search.svg" alt="img-search" />
             <input 
                 className="searchInput" 
                 type="text" 

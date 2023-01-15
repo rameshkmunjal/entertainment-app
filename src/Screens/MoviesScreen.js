@@ -5,9 +5,11 @@ import Bookmark from '../Components/Bookmark';
 
 const MoviesScreen=()=>{
     const placeholderText='Search for Movies';
+    const dispatch=useDispatch();
     const movieData = useSelector((state) => state.movieList);    
     const movieList=movieData.movies;
-    const dispatch=useDispatch();
+    console.log(movieList);
+    
 
     useEffect(()=>{
         dispatch({type:'MOVIE_LIST_SUCCESS', payload:movieList});
@@ -18,7 +20,7 @@ const MoviesScreen=()=>{
             if(m.title===movie.title){
                 console.log(m);
                 console.log(movie);
-                m.isBookmarked = !movie.isBookmarked;
+                m.isBookmarked = movie.isBookmarked;
                 console.log(m.isBookmarked);
             }
         })
@@ -35,7 +37,7 @@ const MoviesScreen=()=>{
                     <div key={item.title} className="card">
                         <p className="card-title">{item.title}</p>
                         <img src={item.thumbnail.regular.small} className="card-image" alt="movie-pic" />
-                        <Bookmark movie={item} clickHandler={toggleBookmark}/>  ``                        
+                        <Bookmark movie={item} bookmarkClickHandler={toggleBookmark}/>  ``                        
                     </div>
                 )
             })
