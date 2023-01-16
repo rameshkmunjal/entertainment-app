@@ -6,7 +6,7 @@ const Nav=()=>{
         <div className="nav">
             <ul>
                 <li>
-                    <Link className="nav-link" to={`/`}>
+                    <Link className="nav-link" to={`/entertainment-app`}>
                         <img src="../entertainment-app/assets/icon-nav-home.svg" alt="nav-home-icon" />
                     </Link>
                 </li>
