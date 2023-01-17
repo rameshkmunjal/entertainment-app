@@ -43,6 +43,7 @@ const SeriesScreen=()=>{
                 return(         
                     <main>
                         <Search placeholderText={placeholderText} />
+                        <h2 className="sectionHeading">TV Series</h2>
                         <div className="homePageContainer">
                             {retrievedSeries}
                         </div>                    

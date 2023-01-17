@@ -1,57 +1,53 @@
-import {useEffect} from 'react';
+import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Search from '../Components/Search';
-import Bookmark from '../Components/Bookmark';
+
+import BookmarkedMovies from '../Components/BookmarkedMovies';
+import BookmarkedSeries from '../Components/BookmarkedSeries';
 
 const BookmarkedScreen=()=>{
     const placeholderText='Search for Bookmarked Movies/Series';
-    const movieData = useSelector((state) => state.movieList);    
-    const movieList=movieData.movies;
+    const movieData = useSelector((state) => state.movieList);
+    const allList=movieData.movies;
+    const [movies, setMovies]=useState(allList.filter(movie=>movie.isBookmarked===true && movie.category==='Movie'));    
+    const [series, setSeries]=useState(allList.filter(s=>s.isBookmarked===true && s.category==='TV Series'));    
     const dispatch=useDispatch();
 
-    useEffect(()=>{
-        dispatch({type:'MOVIE_LIST_SUCCESS', payload:movieList});
-    }, [dispatch, movieList]);
+    
 
-    function toggleBookmark(movie){        
-        movieList.forEach(m=>{            
+    function undoBookmarkMovie(movie){       
+        movies.forEach(m=>{            
             if(m.title===movie.title){
-                console.log(m);
-                console.log(movie);
-                m.isBookmarked = !movie.isBookmarked;
-                console.log(m.isBookmarked);
-            }
-        })
+                m.isBookmarked = false;
+                m=movie;
+            }            
+        })  
+        const allMovies=movies.filter(movie=>movie.isBookmarked===true && movie.category==='Movie');
+        setMovies(allMovies);
+        const allData=[...allMovies, ...series];
+        dispatch({type:'MOVIE_LIST_SUCCESS', payload:allData});            
     }
 
-    if(movieList.length > 0){
-        const bookmarkedData=movieList.filter(movie=>movie.isBookmarked===true);
-        if(bookmarkedData.length > 0){
-            console.log(bookmarkedData.length);
-            const retrievedMovies=bookmarkedData.map(movie=>{
-                console.log("Bookmarked : " , movie);
-                return(
-                    <div key={movie.title} className="card">
-                        <p className="card-title">{movie.title}</p>
-                        <img src={movie.thumbnail.regular.small} className="card-image" alt="movie-pic" />
-                        <Bookmark movie={movie} clickHandler={toggleBookmark}/>
-                        
-                    </div>
-                )
-            })
-
-            if(movieList){
-                return(         
-                    <main>
-                        <Search placeholderText={placeholderText} />
-                        <div className="homePageContainer">
-                            {retrievedMovies}
-                        </div>                    
-                    </main>
-                )
-            }        
-        }   
+    function undoBookmarkSeries(clickedSeries){      
+        series.forEach(s=>{            
+            if(s.title===clickedSeries.title){
+                s.isBookmarked = false;
+                s=series;
+            }            
+        })  
+        const allSeries=series.filter(ser=>ser.isBookmarked===true && ser.category==='TV Series');
+        setSeries(allSeries);
+        const allData=[...movies, ...allSeries];
+        dispatch({type:'MOVIE_LIST_SUCCESS', payload:allData});            
     }
+
+    return(
+        <main>
+            <Search placeholderText={placeholderText} />
+            <BookmarkedMovies movieList={movies} bookmarkHandler={undoBookmarkMovie} />
+            <BookmarkedSeries seriesList={series} bookmarkHandler={undoBookmarkSeries} />
+        </main>        
+    )        
 }
 
 

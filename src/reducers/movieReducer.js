@@ -1,11 +1,11 @@
 
 export const movieListReducer=(state={movies:[]}, action)=>{
-    //console.log(action.payload);
+    
     switch(action.type){
         case 'MOVIE_LIST_REQUEST':
             return {loading:true, movies:[]}
         case 'MOVIE_LIST_SUCCESS':
-            //console.log(action.payload);
+            
             return {
                 loading:false, 
                 movies:action.payload

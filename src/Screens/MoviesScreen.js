@@ -37,7 +37,7 @@ const MoviesScreen=()=>{
                     <div key={item.title} className="card">
                         <p className="card-title">{item.title}</p>
                         <img src={item.thumbnail.regular.small} className="card-image" alt="movie-pic" />
-                        <Bookmark movie={item} bookmarkClickHandler={toggleBookmark}/>  ``                        
+                        <Bookmark movie={item} bookmarkClickHandler={toggleBookmark}/>                         
                     </div>
                 )
             })
@@ -46,6 +46,7 @@ const MoviesScreen=()=>{
                 return(         
                     <main>
                         <Search placeholderText={placeholderText} />
+                        <h2 className="sectionHeading">Movies</h2>
                         <div className="homePageContainer">
                             {retrievedSeries}
                         </div>                    

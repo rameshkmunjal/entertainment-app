@@ -1,9 +1,7 @@
-import { click } from '@testing-library/user-event/dist/click';
 import {useState} from 'react';
 
 const Bookmark=({movie, bookmarkClickHandler})=>{
     const [bookmark, setBookmark]=useState(movie.isBookmarked);
-    console.log(movie);
     const clickHandler=()=>{
         movie.isBookmarked=!bookmark;
         setBookmark(!bookmark);        
