@@ -7,16 +7,16 @@ const Trending=()=>{
     const carousel=useRef();
     const [width, setWidth]=useState(0);
     const movieData = useSelector((state) => state.movieList);    
-    const movieList=movieData.movies;
-    
-    
+    const movieList=movieData.movies;   
     const dispatch=useDispatch();
     
 
     useEffect(()=>{
-        setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+        if(carousel && carousel.current){
+            setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+        }        
         dispatch({type:'MOVIE_LIST_SUCCESS', payload:movieList});
-    }, [dispatch, movieList]);
+    }, [dispatch, movieList, carousel]);
 
     function toggleBookmark(movie){        
         movieList.forEach(m=>{            
@@ -26,7 +26,7 @@ const Trending=()=>{
         })
     }
     
-    if(movieList.length > 0){
+    if(movieList.length > 0 ){
         const trendingData=movieList.filter(movie=>movie.isTrending===true);
         const trendingMovies=trendingData.map(movie=>{
             return(
