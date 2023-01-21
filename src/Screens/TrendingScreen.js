@@ -46,7 +46,7 @@ const TrendingScreen=()=>{
                 return(         
                     <main>
                         <Search placeholderText={placeholderText} />
-                        <div className="homePageContainer">
+                        <div className="pageGrid">
                             {retrievedMovies}
                         </div>                    
                     </main>

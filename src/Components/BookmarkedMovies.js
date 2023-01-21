@@ -26,10 +26,10 @@ const BookmarkedMovies=({movieList, bookmarkHandler})=>{
 
             if(movieList){
                 return(                    
-                    <>
+                    <div className="pageContainer">
                         <h2 className='sectionHeading'>Bookmarked Movies</h2>
-                        <div className="homePageContainer">{retrievedMovies}</div>
-                    </>
+                        <div className="pageGrid">{retrievedMovies}</div>
+                    </div>
                 )
             }
         }   

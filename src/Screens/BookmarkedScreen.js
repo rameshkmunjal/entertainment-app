@@ -1,19 +1,20 @@
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Search from '../Components/Search';
-
+import SearchPage from '../Components/SearchPage';
 import BookmarkedMovies from '../Components/BookmarkedMovies';
 import BookmarkedSeries from '../Components/BookmarkedSeries';
 
 const BookmarkedScreen=()=>{
+    const [searchObj, setSearchObj]=useState({});
+    const [searchPage, setSearchPage]=useState(false);
     const placeholderText='Search for Bookmarked Movies/Series';
     const movieData = useSelector((state) => state.movieList);
     const allList=movieData.movies;
     const [movies, setMovies]=useState(allList.filter(movie=>movie.isBookmarked===true && movie.category==='Movie'));    
     const [series, setSeries]=useState(allList.filter(s=>s.isBookmarked===true && s.category==='TV Series'));    
-    const dispatch=useDispatch();
-
-    
+    const arr=[...movies, ...series];
+    const dispatch=useDispatch();    
 
     function undoBookmarkMovie(movie){       
         movies.forEach(m=>{            
@@ -41,13 +42,36 @@ const BookmarkedScreen=()=>{
         dispatch({type:'MOVIE_LIST_SUCCESS', payload:allData});            
     }
 
-    return(
-        <main>
-            <Search placeholderText={placeholderText} />
-            <BookmarkedMovies movieList={movies} bookmarkHandler={undoBookmarkMovie} />
-            <BookmarkedSeries seriesList={series} bookmarkHandler={undoBookmarkSeries} />
-        </main>        
-    )        
+    function handleSearch(obj){
+        setSearchPage(obj.page);
+        setSearchObj(obj);
+    }
+    
+    if(searchPage){
+        console.log(searchObj);
+        return(
+            <main>
+                <Search
+                    placeholderText={placeholderText} 
+                    searchHandler={handleSearch}
+                    movieList={arr}
+                />
+                <SearchPage searchObj={searchObj} />
+            </main>
+        )
+    } else {        
+        return(
+            <main>
+                    <Search
+                        placeholderText={placeholderText} 
+                        searchHandler={handleSearch}
+                        movieList={arr}
+                    />                    
+                    <BookmarkedMovies movieList={movies} bookmarkHandler={undoBookmarkMovie} />
+                    <BookmarkedSeries seriesList={series} bookmarkHandler={undoBookmarkSeries} />                  
+            </main>
+        )
+    }            
 }
 
 

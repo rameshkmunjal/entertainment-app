@@ -1,7 +1,6 @@
 import Bookmark from '../Components/Bookmark';
 
 const Recommended=({movieList})=>{
-    console.log(movieList);
     if(movieList.length > 0){
         const trendingData=movieList.filter(movie=>movie.isTrending===false);
         const trendingMovies=trendingData.map(movie=>{
@@ -16,12 +15,12 @@ const Recommended=({movieList})=>{
     
         if(trendingMovies.length > 0){
             return(         
-                <main>
+                <div className="pageContainer">
                     <h2 className="sectionHeading">Recommended For You</h2>
-                    <div className="homePageContainer">
+                    <div className="pageGrid">
                         {trendingMovies}
                     </div>                    
-                </main>
+                </div>
             )
         }
         

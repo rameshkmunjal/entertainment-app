@@ -1,16 +1,22 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Search from '../Components/Search';
+import SearchPage from '../Components/SearchPage';
+import Page from '../Components/Page';
 import Bookmark from '../Components/Bookmark';
 
 const MoviesScreen=()=>{
+    const [searchObj, setSearchObj]=useState({});
+    const [searchPage, setSearchPage]=useState(false);
     const placeholderText='Search for Movies';
     const dispatch=useDispatch();
     const movieData = useSelector((state) => state.movieList);    
     const movieList=movieData.movies;
     console.log(movieList);
-    
 
+    if(movieList.length > 0){
+        
+    }
     useEffect(()=>{
         dispatch({type:'MOVIE_LIST_SUCCESS', payload:movieList});
     }, [dispatch, movieList]);
@@ -24,37 +30,49 @@ const MoviesScreen=()=>{
                 console.log(m.isBookmarked);
             }
         })
+    }  
+    
+    function handleSearch(obj){
+        setSearchPage(obj.page);
+        setSearchObj(obj);
     }
-
-    if(movieList.length > 0){
+    
+    if(searchPage){
+        console.log(searchObj);
+        return(
+            <main>
+                <Search
+                    placeholderText={placeholderText} 
+                    searchHandler={handleSearch}
+                    movieList={movieList}
+                />
+                <SearchPage searchObj={searchObj} />
+            </main>
+        )
+    } else {
         const moviesArr=movieList.filter(movie=>movie.category==='Movie');
-
-        if(moviesArr.length > 0){
-            console.log(moviesArr.length);
-            const retrievedSeries=moviesArr.map(item=>{
-                console.log("trending : " , item);
-                return(
+        const retrievedMovies=moviesArr.map(item=>{
+            return(
                     <div key={item.title} className="card">
                         <p className="card-title">{item.title}</p>
                         <img src={item.thumbnail.regular.small} className="card-image" alt="movie-pic" />
                         <Bookmark movie={item} bookmarkClickHandler={toggleBookmark}/>                         
                     </div>
                 )
-            })
-
-            if(retrievedSeries){
-                return(         
-                    <main>
-                        <Search placeholderText={placeholderText} />
-                        <h2 className="sectionHeading">Movies</h2>
-                        <div className="homePageContainer">
-                            {retrievedSeries}
-                        </div>                    
-                    </main>
-                )
-            }        
-        }   
+        })
+        return(
+            <main>
+                    <Search
+                        placeholderText={placeholderText} 
+                        searchHandler={handleSearch}
+                        movieList={movieList}
+                    />                    
+                    <Page results={retrievedMovies} heading={"Movies"}/>                   
+            </main>
+        )
     }
-}
+
+} //component ended
+
 
 export default MoviesScreen;

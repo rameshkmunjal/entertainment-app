@@ -1,12 +1,17 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Search from '../Components/Search';
+import SearchPage from '../Components/SearchPage';
+import Page from '../Components/Page';
 import Bookmark from '../Components/Bookmark';
 
 const SeriesScreen=()=>{
+    const [searchObj, setSearchObj]=useState({});
+    const [searchPage, setSearchPage]=useState(false);
     const placeholderText='Search for Trending TV Series';
     const movieData = useSelector((state) => state.movieList);    
     const movieList=movieData.movies;
+    const seriesData=movieList.filter(movie=>movie.category==='TV Series');
     const dispatch=useDispatch();
 
     useEffect(()=>{
@@ -24,34 +29,46 @@ const SeriesScreen=()=>{
         })
     }
 
-    if(movieList.length > 0){
-        const seriesData=movieList.filter(movie=>movie.category==='TV Series');
-        if(seriesData.length > 0){
-            console.log(seriesData.length);
-            const retrievedSeries=seriesData.map(series=>{
-                console.log("trending : " , series);
-                return(
-                    <div key={series.title} className="card">
-                        <p className="card-title">{series.title}</p>
-                        <img src={series.thumbnail.regular.small} className="card-image" alt="series-pic" />
-                        <Bookmark movie={series} clickHandler={toggleBookmark}/>                        
-                    </div>
-                )
-            })
-
-            if(retrievedSeries){
-                return(         
-                    <main>
-                        <Search placeholderText={placeholderText} />
-                        <h2 className="sectionHeading">TV Series</h2>
-                        <div className="homePageContainer">
-                            {retrievedSeries}
-                        </div>                    
-                    </main>
-                )
-            }        
-        }   
+    function handleSearch(obj){
+        setSearchPage(obj.page);
+        setSearchObj(obj);
     }
+    
+    if(searchPage){
+        console.log(searchObj);
+        return(
+            <main>
+                <Search
+                            placeholderText={placeholderText} 
+                            searchHandler={handleSearch}
+                            movieList={movieList}
+                />
+                <SearchPage searchObj={searchObj} />
+            </main>
+        )
+    } else {        
+        const retrievedSeries=seriesData.map(series=>{
+            return(
+                <div key={series.title} className="card">
+                    <p className="card-title">{series.title}</p>
+                    <img src={series.thumbnail.regular.small} className="card-image" alt="series-pic" />
+                    <Bookmark movie={series} clickHandler={toggleBookmark}/>                        
+                </div>
+            )
+        })
+        return(
+            <main>
+                    <Search
+                        placeholderText={placeholderText} 
+                        searchHandler={handleSearch}
+                        movieList={movieList}
+                    />                    
+                    <Page results={retrievedSeries} heading={"TV Series"}/>                   
+            </main>
+        )
+    }
+
+    
 }
 
 export default SeriesScreen;

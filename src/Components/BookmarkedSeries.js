@@ -26,10 +26,10 @@ const BookmarkedSeries=({seriesList, bookmarkHandler})=>{
 
             if(seriesList){
                 return(                
-                <>
+                <div className="pageContainer">
                     <h2 className='sectionHeading'>Bookmarked TV Series</h2>
-                    <div className="homePageContainer">{retrievedSeries}</div>
-                </>
+                    <div className="pageGrid">{retrievedSeries}</div>
+                </div>
                 )
             }
         }   

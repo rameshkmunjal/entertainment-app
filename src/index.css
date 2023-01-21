@@ -13,39 +13,36 @@
     --clr-light-black:#161D2F;
     --clr-white:#FFFFFF;
 }
+body{
+    background-color: var(--clr-dark-black);
+}
+
+/* common styling for all device sizes */
 
 .wrapper{
+    width:100%;
     display:flex;
-    background-color:var(--clr-dark-black);
-    padding:1rem;
-}
-.nav{
-    width:60px;
-    background-color: var(--clr-light-black);
-    border-radius:20px;
-    height:500px;
-}
-.nav ul li{
-    margin:2rem 1rem;
-}
-main{
-    padding:1rem;
+    padding:2rem;
+    position:relative;
 }
 
+.nav{
+    background-color: var(--clr-light-black);
+    border-radius:10px;
+}
+
+/* search bar : styling */
 .searchInputContainer{
     height:60px;
-    width:600px;
-    border-radius:2rem;
+    border-radius:1rem;
     background-color:var(--clr-light-black);
     display:flex;
     justify-content: flex-start;
     align-items: center;
     padding-left:2rem;
-    margin-left:1rem;
 }
 
 .searchInput{
-    width:400px;
     height:50px;
     border:none;
     background-color: transparent;
@@ -68,21 +65,37 @@ main{
     color:var(--clr-gray);
     letter-spacing:0.05rem;
 }
-
-
-.homePageContainer{
-    padding:1rem;
-    display:grid;
-    grid-template-columns: repeat(4, 280px);
-    gap:0.5rem;
+ /* trending slider : styling */
+.trendingContainer{
+    padding-top:4rem;
+    position:relative;
+    top:15px;
+    left:0;
+}
+.sliderDiv{
+    display:flex;
+    margin-top:2rem;
+    overflow:hidden;
 }
 
+/* section heading in each page : styling */
+.sectionHeading{
+    color:var(--clr-white);
+    font-size:24px;
+    font-weight:500;
+    margin-left:2rem;
+}
+
+/* card : styling */
 .card{
     margin:1rem;
     position:relative;
     color:white;
 }
-
+.card:hover{
+    transform:scale(1.1);
+    cursor:pointer;
+}
 .card-title{
     position:absolute;
     left:1rem;
@@ -92,9 +105,11 @@ main{
     letter-spacing: 2px;
     color:white;
 }
-
 .card-image{
     max-width:100%;
+    border-radius:1rem;
+}
+.sliderImage{
     border-radius:1rem;
 }
 
@@ -116,24 +131,170 @@ main{
 .notBookmarked{
     background-color: var(--clr-light-black);
 }
-
-.card:hover{
-    transform:scale(1.1);
-    cursor:pointer;
-}
-
 .movie-list{
     color:white;
 }
 
-.trendingContainer{
-    padding:2rem 0;
-    display:flex;
+.bookmarkScreenContainer{    
+    padding:2rem 0 0 0;
+    position:relative;
+    top:3rem;
+    left:0;
 }
 
-.sectionHeading{
-    color:var(--clr-white);
-    font-size:24px;
-    font-weight:500;
-    margin-left:2rem;
+.pageContainer{    
+    padding:2rem 0 0 0;
+    position:relative;
+    top:3rem;
+    left:0;
 }
+
+
+/*********************************************************/
+/******Device wise styling******************/
+/********************************************************/
+/* desktop device : styling */
+@media screen and 
+    (min-device-width:993px) and 
+    (max-device-width:1440px){
+        .nav{
+            width:60px;            
+            height:500px;
+            position:fixed;
+            top:2rem;
+            left:1rem;            
+        }
+        .nav ul li{
+            margin:2rem 1rem;
+        }
+        main{
+            width:calc(100% - 60px);
+            padding:0rem 2rem;
+            position:absolute;
+            top:3rem;
+            left:60px;
+        }
+        .searchInputContainer{
+            width:600px;
+            margin-left:1rem;
+        }
+        .searchInput{
+            width:400px;
+        }
+        .sliderImage{
+            width:300px;
+        }
+        .pageGrid{
+            padding:1rem;
+            display:grid;
+            grid-template-columns: repeat(4, minmax(200px, 300px));
+            gap:0.5rem;
+            position:relative;
+            top:10px;
+            left:0;
+        }
+}
+
+/* tablet device : styling */
+@media screen and 
+    (min-device-width:501px) and 
+    (max-device-width:992px){
+        .nav{
+            width:80%;            
+            height:60px;
+            position:fixed;
+            top:2rem;
+            left:8%;  
+            z-index:1000;          
+        }
+        .nav ul{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav ul li{
+            padding-top:1rem;
+            margin:0 2rem;
+        }
+        main{
+            width:100%;
+            padding:1rem;
+            position:absolute;
+            top:6rem;
+            left:0px;
+        }
+        .searchInputContainer{
+            width:600px;
+        }
+        .searchInput{
+            width:400px;
+        }
+        .sliderImage{
+            width:280px;
+        }
+        .pageGrid{
+            padding:1rem;
+            display:grid;
+            grid-template-columns: repeat(3, minmax(230px, 320px));
+            gap:0.5rem;
+            position:relative;
+            top:30px;
+            left:0;
+        }
+}
+
+/* tablet device : styling */
+@media screen and 
+    (min-device-width:360px) and 
+    (max-device-width:500px){
+        .nav{
+            width:80%;            
+            height:60px;
+            position:fixed;
+            top:2rem;
+            left:8%;  
+            z-index:1000;          
+        }
+        .nav ul{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav ul li{
+            padding-top:1rem;
+            margin:0 2rem;
+        }
+        main{
+            width:100%;
+            padding:1rem;
+            position:absolute;
+            top:6rem;
+            left:0px;
+        }
+        .searchInputContainer{
+            width:360px;
+        }
+        .searchInput{
+            width:300px;
+        }
+        .sliderImage{
+            width:240px;
+        }
+        .pageGrid{
+            padding:0.5rem;
+            display:grid;
+            grid-template-columns: repeat(2, 170px);
+            gap:0.5rem;
+            position:relative;
+            top:30px;
+            left:0;
+        }
+}
+
+
+
+
+
+
+
+
