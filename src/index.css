@@ -72,10 +72,13 @@ body{
     top:15px;
     left:0;
 }
-.sliderDiv{
+.carousel{
+    cursor:grab;
+    overflow: hidden;
+}
+.image-carousel{
     display:flex;
     margin-top:2rem;
-    overflow:hidden;
 }
 
 /* section heading in each page : styling */
@@ -248,11 +251,11 @@ body{
     (min-device-width:360px) and 
     (max-device-width:500px){
         .nav{
-            width:80%;            
+            width:90%;            
             height:60px;
             position:fixed;
             top:2rem;
-            left:8%;  
+            left:5%;  
             z-index:1000;          
         }
         .nav ul{

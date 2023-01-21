@@ -1,23 +1,27 @@
-import {useEffect} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {motion} from 'framer-motion';
 import Bookmark from './Bookmark';
 
 const Trending=()=>{
+    const carousel=useRef();
+    const [width, setWidth]=useState(0);
     const movieData = useSelector((state) => state.movieList);    
     const movieList=movieData.movies;
+    
+    
     const dispatch=useDispatch();
+    
 
     useEffect(()=>{
+        setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
         dispatch({type:'MOVIE_LIST_SUCCESS', payload:movieList});
     }, [dispatch, movieList]);
 
     function toggleBookmark(movie){        
         movieList.forEach(m=>{            
             if(m.title===movie.title){
-                console.log(m);
-                console.log(movie);
                 m.isBookmarked = !movie.isBookmarked;
-                console.log(m.isBookmarked);
             }
         })
     }
@@ -38,9 +42,14 @@ const Trending=()=>{
             return(         
                 <div className="trendingContainer">
                     <h2 className="sectionHeading">Trending</h2>
-                    <div className="sliderDiv">
-                        {trendingMovies}
-                    </div>                    
+                    <motion.div ref={carousel} className="carousel" whileTap={{cursor:"grabbing"}}>
+                        <motion.div 
+                            className="image-carousel" 
+                            drag="x" 
+                            dragConstraints={{right:0, left:-width}}>
+                            {trendingMovies}
+                        </motion.div> 
+                    </motion.div>                                       
                 </div>
             )
         }
