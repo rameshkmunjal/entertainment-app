@@ -12,7 +12,7 @@ const Bookmark=({movie, bookmarkClickHandler})=>{
             <div className="bookmarkIconDiv bookmarked" onClick={clickHandler}>
             <img 
                 className="bookmarkIcon" 
-                src="../entertainment-app/assets/icon-bookmark-full.svg" 
+                src="../assets/icon-bookmark-full.svg" 
                 alt="bookmark-icon" 
             />                
             </div>
@@ -20,7 +20,7 @@ const Bookmark=({movie, bookmarkClickHandler})=>{
             <div className="bookmarkIconDiv notBookmarked" onClick={clickHandler}>
             <img 
                 className="bookmarkIcon" 
-                src="../entertainment-app/assets/icon-bookmark-empty.svg" 
+                src="../assets/icon-bookmark-empty.svg" 
                 alt="bookmark-icon" 
             />                
             </div>
