@@ -14,7 +14,8 @@ const Trending=()=>{
     useEffect(()=>{
         if(carousel && carousel.current){
             setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-        }        
+        }
+                
         dispatch({type:'MOVIE_LIST_SUCCESS', payload:movieList});
     }, [dispatch, movieList, carousel]);
 
