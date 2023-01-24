@@ -1,10 +1,10 @@
+import DB from '../db/data.json';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Trending from '../Components/Trending';
 import Recommended from '../Components/Recommended';
 import Search from '../Components/Search';
 import SearchPage from '../Components/SearchPage';
-import DB from '../db/data.json';
 
 const HomeScreen=()=>{   
     const [searchObj, setSearchObj]=useState({});
