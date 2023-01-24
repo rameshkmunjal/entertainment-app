@@ -1,10 +1,11 @@
 import Bookmark from '../Components/Bookmark';
 
 const Recommended=({movieList})=>{
+    console.log(movieList);
     if(movieList.length > 0){
         const recommendData=movieList.filter(movie=>movie.isTrending===false);
         const recommendedMovies=recommendData.map(movie=>{
-            return(
+            return(                
                 <div key={movie.title} className="card">
                     <p className="card-title">{movie.title}</p>
                     <img src={movie.thumbnail.regular.small} className="card-image" alt="movie-pic" />
