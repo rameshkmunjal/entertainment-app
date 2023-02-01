@@ -16,7 +16,7 @@ const BookmarkedSeries=({seriesList, bookmarkHandler})=>{
                         <div className="bookmarkIconDiv bookmarked" onClick={()=>clickHandler(series)}>
                             <img 
                                 className="bookmarkIcon" 
-                                src="../entertainment-app/assets/icon-bookmark-full.svg" 
+                                src="../assets/icon-bookmark-full.svg" 
                                 alt="bookmark-icon" 
                             />                
                         </div>                                               
