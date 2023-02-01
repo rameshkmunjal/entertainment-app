@@ -11,7 +11,6 @@ function App() {
       <BrowserRouter>
       <Nav />
         <Routes>
-          <Route path='/' element={<HomeScreen/>} />
           <Route path='/entertainment-app' element={<HomeScreen/>} />
           <Route path='/movies' element={<MoviesScreen/>} />
           <Route path='/series' element={<SeriesScreen/>} />
