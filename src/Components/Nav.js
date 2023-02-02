@@ -16,7 +16,7 @@ const Nav=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link className="nav-link" to={`/movies`}>
+                    <Link className="nav-link" to={`/allmovies`}>
                         <img src="../entertainment-app/assets/icon-nav-movies.svg" alt="nav-home-icon" />
                     </Link>
                 </li>
