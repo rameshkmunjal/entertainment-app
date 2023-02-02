@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const BookmarkedSeries=({seriesList, bookmarkHandler})=>{
+const BookmarkedSeries=({seriesList, bookmarkHandler, baseURL})=>{
     const [nilBookmark, setNilBookmark]=useState(true);
     function clickHandler(m){
         setNilBookmark(!nilBookmark);
@@ -11,12 +11,12 @@ const BookmarkedSeries=({seriesList, bookmarkHandler})=>{
                 return(
                     <div key={series.title} className="card">
                         <p className="card-title">{series.title}</p>
-                        <img src={series.thumbnail.regular.small} className="card-image" alt="series-pic" />
+                        <img src={baseURL + series.thumbnail.regular.small} className="card-image" alt="series-pic" />
                         
                         <div className="bookmarkIconDiv bookmarked" onClick={()=>clickHandler(series)}>
                             <img 
                                 className="bookmarkIcon" 
-                                src="../entertainment-app/assets/icon-bookmark-full.svg" 
+                                src={baseURL +'/assets/icon-bookmark-full.svg' }
                                 alt="bookmark-icon" 
                             />                
                         </div>                                               

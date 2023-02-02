@@ -1,6 +1,6 @@
 import Bookmark from '../Components/Bookmark';
 
-const Recommended=({movieList})=>{
+const Recommended=({movieList, baseURL})=>{
     console.log(movieList);
     if(movieList.length > 0){
         const recommendData=movieList.filter(movie=>movie.isTrending===false);
@@ -8,7 +8,7 @@ const Recommended=({movieList})=>{
             return(                
                 <div key={movie.title} className="card">
                     <p className="card-title">{movie.title}</p>
-                    <img src={movie.thumbnail.regular.small} className="card-image" alt="movie-pic" />
+                    <img src={baseURL + movie.thumbnail.regular.small} className="card-image" alt="movie-pic" />
                     <Bookmark movie={movie} />
                 </div>
             )

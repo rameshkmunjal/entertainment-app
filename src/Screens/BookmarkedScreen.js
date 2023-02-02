@@ -6,6 +6,8 @@ import BookmarkedMovies from '../Components/BookmarkedMovies';
 import BookmarkedSeries from '../Components/BookmarkedSeries';
 
 const BookmarkedScreen=()=>{
+    console.log(window.location.origin);
+    const baseURL=window.location.origin +'/entertainment-app';
     const [searchObj, setSearchObj]=useState({});
     const [searchPage, setSearchPage]=useState(false);
     const placeholderText='Search for Bookmarked Movies/Series';
@@ -67,8 +69,8 @@ const BookmarkedScreen=()=>{
                         searchHandler={handleSearch}
                         movieList={arr}
                     />                    
-                    <BookmarkedMovies movieList={movies} bookmarkHandler={undoBookmarkMovie} />
-                    <BookmarkedSeries seriesList={series} bookmarkHandler={undoBookmarkSeries} />                  
+                    <BookmarkedMovies baseURL={baseURL} movieList={movies} bookmarkHandler={undoBookmarkMovie} />
+                    <BookmarkedSeries baseURL={baseURL} seriesList={series} bookmarkHandler={undoBookmarkSeries} />                  
             </main>
         )
     }            

@@ -6,6 +6,7 @@ import Page from '../Components/Page';
 import Bookmark from '../Components/Bookmark';
 
 const MoviesScreen=()=>{
+    const baseURL=window.location.origin +'/entertainment-app';
     const [searchObj, setSearchObj]=useState({});
     const [searchPage, setSearchPage]=useState(false);
     const placeholderText='Search for Movies';
@@ -55,7 +56,7 @@ const MoviesScreen=()=>{
             return(
                     <div key={item.title} className="card">
                         <p className="card-title">{item.title}</p>
-                        <img src={item.thumbnail.regular.small} className="card-image" alt="movie-pic" />
+                        <img src={baseURL + item.thumbnail.regular.small} className="card-image" alt="movie-pic" />
                         <Bookmark movie={item} bookmarkClickHandler={toggleBookmark}/>                         
                     </div>
                 )

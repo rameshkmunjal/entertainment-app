@@ -6,7 +6,9 @@ import Recommended from '../Components/Recommended';
 import Search from '../Components/Search';
 import SearchPage from '../Components/SearchPage';
 
-const HomeScreen=()=>{   
+const HomeScreen=()=>{
+    console.log(window.location.href);  
+    const baseURL= window.location.href ;
     const [searchObj, setSearchObj]=useState({});
     const [searchPage, setSearchPage]=useState(false);
     const movieData = useSelector((state) => state.movieList); 
@@ -44,8 +46,8 @@ const HomeScreen=()=>{
                     searchHandler={handleSearch}
                     movieList={movieList}
                 />                    
-                <Trending />
-                <Recommended movieList={movieList} />                   
+                <Trending baseURL={baseURL} />
+                <Recommended movieList={movieList} baseURL={baseURL} />                   
             </main>
         )
     }

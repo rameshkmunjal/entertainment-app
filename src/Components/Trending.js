@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {motion} from 'framer-motion';
 import Bookmark from './Bookmark';
 
-const Trending=()=>{
+const Trending=({baseURL})=>{
     const carousel=useRef();
     const [width, setWidth]=useState(0);
     const movieData = useSelector((state) => state.movieList);    
@@ -33,7 +33,11 @@ const Trending=()=>{
             return(
                 <div key={movie.title} className="card">
                     <p className="card-title">{movie.title}</p>
-                    <img src={movie.thumbnail.regular.small} className="sliderImage" alt="movie-pic" />
+                    <img 
+                        src={baseURL + movie.thumbnail.regular.small} 
+                        className="sliderImage" 
+                        alt="movie-pic" 
+                    />
                     <Bookmark movie={movie} clickHandler={toggleBookmark}/>
                 </div>
             )
