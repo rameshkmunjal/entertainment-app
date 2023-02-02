@@ -2,6 +2,7 @@
 
 const SearchPage=({searchObj})=>{
     console.log(searchObj);
+    const baseURL=window.location.origin +'/entertainment-app';
     let {message, results, success}=searchObj;
 
     if(success){
@@ -10,7 +11,7 @@ const SearchPage=({searchObj})=>{
             return(
                 <div key={movie.title} className="card">
                     <p className="card-title">{movie.title}</p>
-                    <img src={movie.thumbnail.regular.small} className="card-image" alt="movie-pic" />                    
+                    <img src={baseURL + movie.thumbnail.regular.small} className="card-image" alt="movie-pic" />                    
                 </div>
             )
         })
